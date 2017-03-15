@@ -166,7 +166,7 @@ public class SqoopHCatImportHelper {
     for (Map.Entry<String, Object> entry : fieldMap.entrySet()) {
       String key = entry.getKey();
       Object val = entry.getValue();
-      String hfn = key.toLowerCase();
+      String hfn = key.toLowerCase().replaceFirst("^_", "");
       boolean skip = false;
       if (staticPartitionKeys != null && staticPartitionKeys.length > 0) {
         for (int i = 0; i < staticPartitionKeys.length; ++i) {
