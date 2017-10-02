@@ -84,6 +84,15 @@ public class ImportJobBase extends JobBase {
     this.context = context;
   }
 
+  @Override
+  protected void configureMapper(Job job, String tableName,
+      String tableClassName) throws ClassNotFoundException, IOException {
+
+    job.setMapperClass(getMapperClass());
+
+    ConfigurationHelper.setJobMapSpeculativeExecution(job, false);
+  }
+
   /**
    * Configure the output format to use for the job.
    */
